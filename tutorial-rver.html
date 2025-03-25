@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tutorial do RVER</title>
+    <style>
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #e35c1f;
+      }
+      strong {
+        color: #ee6224;
+      }
+      code {
+        background-color: #f0f0f0;
+        color: #000000;
+        padding: 10px;
+        display: block;
+        border-radius: 5px;
+        white-space: pre-wrap;
+      }
+      ul li {
+        margin-bottom: 8px;
+      }
+      img {
+        margin: 20px 0;
+        max-width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TUTORIAL DO RVER (RISC-V Educational Resource)</h1>
+    <p>
+      <strong>Autor:</strong> Eduardo Michel Deves de Souza<br />
+      <strong>Revisão:</strong> Prof. Dr. Douglas Rossi de Melo
+    </p>
+
+    <h2>Introdução</h2>
+    <p>
+      RVER é um simulador web interativo desenvolvido para a arquitetura RISC-V.
+      Com ele, é possível escrever programas em linguagem de montagem para o
+      conjunto de instruções RV32I e simular sua execução diretamente em um
+      ambiente web. O RVER foi projetado com foco no uso educacional, oferecendo
+      uma interface acessível e recursos visuais para facilitar o aprendizado de
+      arquitetura de computadores. Por ser baseado em tecnologias web como
+      TypeScript e Angular, não requer instalação e pode ser executado
+      localmente em navegadores modernos.
+    </p>
+
+    <h2>1 - Abra o RVER</h2>
+    <p>
+      O RVER pode ser acessado diretamente pelo navegador, sem necessidade de
+      instalação. Basta abrir o seguinte endereço:
+    </p>
+    <p>
+      <a href="https://eduardomichell.github.io/rv-sim/" target="_blank">
+        https://eduardomichell.github.io/rv-sim/
+      </a>
+    </p>
+
+    <h2>
+      2 - Escrevendo seu primeiro programa em linguagem de montagem RISC-V
+    </h2>
+    <p>
+      Para começar, escreva seu código diretamente na aba <strong>Edit</strong>,
+      localizada no menu superior. Essa aba permite digitar o programa em
+      linguagem assembly RISC-V diretamente no navegador.
+    </p>
+    <img src="imgs/edit.png" alt="Aba Edit do RVER" />
+
+    <p>
+      Se precisar de ajuda com a sintaxe ou comandos disponíveis, clique no
+      botão <strong>Help</strong>. Esse botão abre uma seção com instruções e
+      exemplos úteis para a escrita correta do código.
+    </p>
+    <img src="imgs/help.png" alt="Botão Help do RVER" />
+
+    <h2>3 - Monte seu programa no RVER</h2>
+    <p>
+      Após escrever seu código, clique no botão
+      <strong>Assemble Code</strong> para iniciar o processo de montagem. Essa
+      etapa converte o código escrito em linguagem de montagem (assembly) para
+      linguagem de máquina, que é compreendida pelo simulador.
+    </p>
+    <img src="imgs/assemble.png" alt="Botão Assemble Code no RVER" />
+
+    <p>
+      Ao concluir a montagem, o simulador alterna automaticamente para a aba
+      <strong>Execute</strong>, onde o código convertido é exibido e fica pronto
+      para execução. Nessa aba, é possível visualizar cada instrução com seus
+      respectivos endereços.
+    </p>
+    <img
+      src="imgs/execute.png"
+      alt="Aba Execute mostrando o código convertido"
+    />
+
+    <h2>4 - Entendendo as janelas do RVER</h2>
+    <p>O RVER é dividido em várias janelas com funções específicas:</p>
+    <ul>
+      <li>
+        <strong style="color: #ed1c24">Menu de opções:</strong> permite abrir e
+        salvar arquivos, exportar o código, montar o código, iniciar a execução
+        (completa ou passo a passo), reverter o último passo e reiniciar o
+        simulador.
+      </li>
+      <li><strong style="color: #fff200">Edit:</strong> editor de código.</li>
+      <li>
+        <strong style="color: #fff200">Execute:</strong> exibe o código
+        convertido em linguagem de máquina.
+      </li>
+      <li>
+        <strong style="color: #00a2e8">Registers:</strong> mostra os valores
+        atuais dos registradores.
+      </li>
+      <li>
+        <strong style="color: #22b14c">Console:</strong> exibe mensagens e
+        saídas.
+      </li>
+    </ul>
+    <img src="imgs/janelas.png" alt="Janelas principais do RVER" />
+
+    <p>
+      A seção de execução, apresentada na imagem abaixo, mostra o código montado
+      e o estado atual da memória. O painel é subdividido em duas áreas: o
+      <strong style="color: #a349a4">Text Segment</strong>, que exibe as linhas
+      de código após a montagem, e o
+      <strong style="color: #ff7f27">Data Segment</strong>, que mostra a
+      memória. O usuário pode navegar pelas páginas de memória, visualizar dados
+      em diferentes formatos e acompanhar apenas os endereços alterados.
+    </p>
+    <img
+      src="imgs/executeDetail.png"
+      alt="Detalhamento do painel Execute com Text e Data Segment"
+    />
+
+    <h2>5 - Execute seu programa no RVER</h2>
+    <p>
+      Com o código montado, você pode executar o programa passo a passo clicando
+      no botão <strong>Run One Step</strong>. Cada clique executa uma única
+      instrução, permitindo acompanhar as alterações feitas nos registradores e
+      a indicação da instrução atual no <strong>Text Segment</strong>.
+    </p>
+    <img src="imgs/runOneStep.png" alt="Botão Run One Step no RVER" />
+
+    <p>
+      Se preferir, é possível executar o programa por completo clicando no botão
+      <strong>Run</strong>. Isso fará com que todas as instruções sejam
+      processadas de uma vez, exibindo os resultados finais nos registradores e
+      no <strong>Console</strong>.
+    </p>
+    <img src="imgs/run.png" alt="Execução completa do programa no RVER" />
+
+    <h2 id="exercises">6 - Crie você mesmo seus programas</h2>
+    <p>
+      Agora que você conhece o funcionamento do RVER, execute os exercícios 1 e
+      2 propostos para praticar a criação de programas em linguagem de montagem
+      RISC-V. Você pode acessá-los nos links abaixo:
+      <br />
+      ➤ <a href="exercicio1.html">Exercício 1</a><br />
+      ➤ <a href="exercicio2.html">Exercício 2</a>
+    </p>
+  </body>
+</html>
