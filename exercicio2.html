@@ -101,7 +101,25 @@
   </head>
   <body>
     <h1>Exercício 02</h1>
-
+    <h3 for="studentName"><strong>Nome do aluno:</strong></h3>
+      <input
+      type="text"
+      id="studentName"
+      name="studentName"
+      placeholder="Digite seu nome aqui"
+      style="
+        margin-bottom: 20px;
+        display: block;
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        text-align: left;
+        background: transparent;
+        border: none;
+        font-family: Arial, sans-serif;
+      "
+    />
+    
     <h2>Objetivo</h2>
     <p>
       Aprender a manipular vetores e endereços de memória utilizando a linguagem
@@ -243,7 +261,7 @@
       </li>
       <li>O endereço da linha é <code>0x10010020</code>.</li>
       <li>O deslocamento +12 equivale a <code>0xC</code> em hexadecimal.</li>
-      <li>Somando: <code>0x10010020 + 0xC = 0x1001002C</code>.</li>
+      <li>Somando: <code>0x10010020 + 0xC = 0x1001002C</code></li>
     </ul>
     <p>Outra forma de calcular, a partir do endereço base do vetor:</p>
 
@@ -387,7 +405,7 @@
             <td class="tg-fymr">addi x19 x19 -4</td>
             <td class="tg-c3ow"></td>
             <td class="tg-c3ow"></td>
-            <td class="tg-7btt">0x10010000</td>
+            <td class="tg-7btt">10010000</td>
             <td class="tg-c3ow"></td>
             <td class="tg-c3ow"></td>
             <td class="tg-c3ow"></td>
