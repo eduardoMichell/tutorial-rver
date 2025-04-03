@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Exercício 2 - Linguagem Assembly RISC-V</title>
     <style>
-       body {
+      body {
         font-family: Arial, sans-serif;
         background-color: #ffffff;
         color: #000000;
@@ -102,7 +102,7 @@
   <body>
     <h1>Exercício 02</h1>
     <h3 for="studentName"><strong>Nome do aluno:</strong></h3>
-      <input
+    <input
       type="text"
       id="studentName"
       name="studentName"
@@ -119,7 +119,7 @@
         font-family: Arial, sans-serif;
       "
     />
-    
+
     <h2>Objetivo</h2>
     <p>
       Aprender a manipular vetores e endereços de memória utilizando a linguagem
@@ -179,7 +179,7 @@
       <li>
         <strong>Segmento da pilha (sp):</strong> utilizado para chamadas de
         função e variáveis locais. Pode ser identificado como
-        <code>0x7fffefe0 (sp)</code>.
+        <code>0x7FFFEFE0 (sp)</code>.
       </li>
       <li>
         <strong>Segmento de texto (.text):</strong> contém as instruções do
@@ -321,139 +321,150 @@
     </p>
 
     <form id="execTable">
-        <div class="tg-wrapper">
-        
-      <table class="tg">
-        <thead>
-          <tr>
-            <th class="tg-7btt" colspan="2">Antes</th>
-            <th class="tg-7btt" colspan="9">Depois da execução da instrução</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="tg-7btt" rowspan="2">Pc</td>
-            <td class="tg-7btt" rowspan="2">Instrução<br /></td>
-            <td class="tg-7btt" colspan="3">Registradores</td>
-            <td class="tg-7btt" colspan="6">Segmento de Dados</td>
-          </tr>
-          <tr>
-            <td class="tg-7btt">R5</td>
-            <td class="tg-7btt">R18</td>
-            <td class="tg-7btt">R19</td>
-            <td class="tg-7btt">10010000</td>
-            <td class="tg-7btt">...</td>
-            <td class="tg-7btt">10010020</td>
-            <td class="tg-amwm">...</td>
-            <td class="tg-7btt">10010030</td>
-            <td class="tg-1wig">...</td>
-          </tr>
-          <tr>
-            <td class="tg-0pky"></td>
-            <td class="tg-0pky"></td>
-            <td class="tg-7btt">(t0)</td>
-            <td class="tg-7btt">(s2)</td>
-            <td class="tg-7btt">(s3)</td>
-            <td class="tg-7btt">Array_A[0]<br />1º linha coluna(+0)</td>
-            <td class="tg-fymr">...</td>
-            <td class="tg-7btt">Array_A[8]<br />2º linha coluna(+0)</td>
-            <td class="tg-1wig">...</td>
-            <td class="tg-7btt">Array_A[12]<br />2º linha coluna(+10)<br /></td>
-            <td class="tg-1wig">...</td>
-          </tr>
-          <tr>
-            <td class="tg-0pky"></td>
-            <td class="tg-0pky"></td>
-            <td class="tg-7btt">00000000</td>
-            <td class="tg-7btt">00000000</td>
-            <td class="tg-7btt">00000000</td>
-            <td class="tg-7btt">00000000</td>
-            <td class="tg-7btt"></td>
-            <td class="tg-7btt">00000050</td>
-            <td class="tg-amwm"></td>
-            <td class="tg-7btt">00000078</td>
-            <td class="tg-0lax"></td>
-          </tr>
-          <tr>
-            <td class="tg-fymr">00400000</td>
-            <td class="tg-fymr">addi s2, zero, 1</td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-7btt">00000001</td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-baqh"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-0lax"></td>
-          </tr>
-          <tr>
-            <td class="tg-fymr">00400004</td>
-            <td class="tg-fymr">auipc x19 64528</td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-baqh"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-0lax"></td>
-          </tr>
-          <tr>
-            <td class="tg-fymr">00400008</td>
-            <td class="tg-fymr">addi x19 x19 -4</td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-7btt">10010000</td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-baqh"></td>
-            <td class="tg-c3ow"></td>
-            <td class="tg-0lax"></td>
-          </tr>
-          <tr>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
-            <td> </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="tg-wrapper">
+        <table class="tg">
+          <thead>
+            <tr>
+              <th class="tg-7btt" colspan="3">Antes</th>
+              <th class="tg-7btt" colspan="9">
+                Depois da execução da instrução
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-7btt" rowspan="2">PC</td>
+              <td class="tg-7btt" rowspan="2">Instrução<br /></td>
+              <td class="tg-7btt" rowspan="2">Pseudoinstrução</td>
+              <td class="tg-7btt" colspan="3">Registradores</td>
+              <td class="tg-7btt" colspan="6">Segmento de Dados</td>
+            </tr>
+            <tr>
+              <td class="tg-7btt">R5</td>
+              <td class="tg-7btt">R18</td>
+              <td class="tg-7btt">R19</td>
+              <td class="tg-7btt">0x10010000</td>
+              <td class="tg-7btt">...</td>
+              <td class="tg-7btt">0x10010020</td>
+              <td class="tg-7btt">...</td>
+              <td class="tg-7btt">0x10010030</td>
+              <td class="tg-7btt">...</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-7btt">(t0)</td>
+              <td class="tg-7btt">(s2)</td>
+              <td class="tg-7btt">(s3)</td>
+              <td class="tg-7btt">Array_A[0]<br />1º linha coluna(+0)</td>
+              <td class="tg-7btt">...</td>
+              <td class="tg-7btt">Array_A[8]<br />2º linha coluna(+0)</td>
+              <td class="tg-7btt">...</td>
+              <td class="tg-7btt">Array_A[12]<br />2º linha coluna(+10)</td>
+              <td class="tg-7btt">...</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-7btt">0x00000000</td>
+              <td class="tg-7btt">0x00000000</td>
+              <td class="tg-7btt">0x00000000</td>
+              <td class="tg-7btt">0x00000000</td>
+              <td class="tg-7btt"></td>
+              <td class="tg-7btt">0x00000050</td>
+              <td class="tg-amwm"></td>
+              <td class="tg-7btt">0x00000078</td>
+              <td class="tg-0lax"></td>
+            </tr>
+            <tr>
+              <td class="tg-fymr">0x00400000</td>
+              <td class="tg-fymr">addi s2, zero, 1</td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-7btt">0x00000001</td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-baqh"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-0lax"></td>
+              <td class="tg-0lax"></td>
+            </tr>
+            <tr>
+              <td class="tg-fymr">0x00400004</td>
+              <td class="tg-fymr">auipc x19 64528</td>
+              <td class="tg-c3ow"><strong>la s3, Array_A</strong></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-baqh"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-0lax"></td>
+            </tr>
+            <tr>
+              <td class="tg-fymr">0x00400008</td>
+              <td class="tg-fymr">addi x19 x19 -4</td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-7btt">0x10010000</td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-baqh"></td>
+              <td class="tg-c3ow"></td>
+              <td class="tg-0lax"></td>
+              <td class="tg-0lax"></td>
+            </tr>
+            <tr>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <button type="button" onclick="window.print()">Salvar como PDF</button>
     </form>
 
