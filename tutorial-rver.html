@@ -56,6 +56,96 @@
       localmente em navegadores modernos.
     </p>
 
+    <h2>Como organizar seu código RISC-V</h2>
+    <p>
+      Antes de começar a usar o RVER, é importante entender como estruturar
+      corretamente um programa em linguagem de montagem RISC-V. O código é
+      dividido em duas partes principais: <strong>.data</strong> e
+      <strong>.text</strong>.
+    </p>
+
+    <h3>Formato geral do código</h3>
+    <p>Cada linha pode conter até quatro partes:</p>
+    <pre><code> ROTULO: 
+      MNEMÔNICO OPERANDOS # COMENTÁRIO </code></pre>
+
+    <ul>
+      <li>
+        <strong>Rótulo (label):</strong> Opcional. Serve para nomear uma posição
+        no código. Termina com dois-pontos (<strong>:</strong>).
+      </li>
+      <li>
+        <strong>Mnemonico:</strong> O nome da instrução (ex:
+        <strong>addi</strong>, <strong>lw</strong>, <strong>sw</strong>,
+        <strong>beq</strong>).
+      </li>
+      <li>
+        <strong>Operandos:</strong> Registradores e valores usados pela
+        instrução.
+      </li>
+      <li>
+        <strong>Comentário:</strong> Começa com <strong>#</strong> e serve pra
+        explicar o que a linha faz.
+      </li>
+    </ul>
+
+    <p><strong>Exemplo:</strong></p>
+    <pre><code>
+      main: 
+        addi x5, x0, 2        # x5 = 2 
+        addi x6, x0, 2        # x6 = 2 
+        soma: add x7, x5, x6  # x7 = x5 + x6
+    </code></pre>
+
+    <h3>Segmento de dados (.data)</h3>
+    <p>
+      O segmento <strong>.data</strong> é onde você define variáveis e vetores.
+      Ele vem <strong>antes</strong> do segmento <strong>.text</strong>, mas só
+      é necessário se você for usar dados no seu programa.
+    </p>
+
+    <p>Diretivas mais comuns:</p>
+    <ul>
+      <li>
+        <strong>.word</strong>: define um ou mais inteiros (ex: variáveis ou
+        vetores).
+      </li>
+      <li>
+        <strong>.asciiz</strong> ou <strong>.string</strong>: define uma string
+        (texto).
+      </li>
+    </ul>
+
+    <p><strong>Exemplo:</strong></p>
+    <pre><code>
+      .data 
+        num: .word 5 
+        vet: .word 10, 20, 30, 40 
+        msg: .string "Olá, mundo!"
+        buffer: .asciiz ""
+    </code></pre>
+
+    <h3>Segmento de texto (.text)</h3>
+    <p>
+      O segmento <strong>.text</strong> é <strong>obrigatório</strong>. É nele
+      que ficam as instruções do programa, ou seja, o que será executado pelo
+      simulador.
+    </p>
+
+    <p><strong>Exemplo:</strong></p>
+    <pre><code>
+      .text
+        main: addi x5, x0, 2 # x5 = 2 
+        addi x6, x0, 2       # x6 = 2 
+        add x7, x5, x6       # x7 = x5 + x6
+    </code></pre>
+
+    <p>
+      Se o seu programa não usa dados, você pode usar apenas o
+      <strong>.text</strong>. Mas nunca o contrário, não existe programa
+      funcional sem <strong>.text</strong>.
+    </p>
+
     <h2>1 - Abra o RVER</h2>
     <p>
       O RVER pode ser acessado diretamente pelo navegador, sem necessidade de
@@ -162,31 +252,44 @@
 
     <h2 id="exercises">6 - Crie você mesmo seus programas</h2>
     <p>
-      Agora que você conhece o funcionamento do RVER, execute os exercícios 1 e
-      2 propostos para praticar a criação de programas em linguagem de montagem
-      RISC-V. Você pode acessá-los nos links abaixo:
-      <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
-        <li style="margin-bottom: 10px;">
-          <a href="exercicio1.html" style="text-decoration: none; font-weight: bold; color: #e35c1f;">
-            ➤ Exercício 1
-          </a>
-        </li>
-        <li style="margin-bottom: 10px;">
-          <a href="exercicio2.html" style="text-decoration: none; font-weight: bold; color: #e35c1f;">
-            ➤ Exercício 2
-          </a>
-        </li>
-        <li>
-          <a href="exercicio3.html" style="text-decoration: none; font-weight: bold; color: #e35c1f;">
-            ➤ Exercício 3
-          </a>
-        </li>
-        <li>
-          <a href="exercicio4.html" style="text-decoration: none; font-weight: bold; color: #e35c1f;">
-            ➤ Exercício 4
-          </a>
-        </li>
-      </ul>
+      Agora que você conhece o funcionamento do RVER, execute os exercícios 1 a
+      4 propostos para praticar a criação de programas em linguagem de montagem
+      RISC-V.
     </p>
+
+    <ul style="list-style: none; padding-left: 0; margin-top: 20px">
+      <li style="margin-bottom: 10px">
+        <a
+          href="exercicio1.html"
+          style="text-decoration: none; font-weight: bold; color: #e35c1f"
+        >
+          ➤ Exercício 1
+        </a>
+      </li>
+      <li style="margin-bottom: 10px">
+        <a
+          href="exercicio2.html"
+          style="text-decoration: none; font-weight: bold; color: #e35c1f"
+        >
+          ➤ Exercício 2
+        </a>
+      </li>
+      <li>
+        <a
+          href="exercicio3.html"
+          style="text-decoration: none; font-weight: bold; color: #e35c1f"
+        >
+          ➤ Exercício 3
+        </a>
+      </li>
+      <li>
+        <a
+          href="exercicio4.html"
+          style="text-decoration: none; font-weight: bold; color: #e35c1f"
+        >
+          ➤ Exercício 4
+        </a>
+      </li>
+    </ul>
   </body>
 </html>
