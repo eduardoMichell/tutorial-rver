@@ -17,6 +17,38 @@ Você pode acessar o RVER diretamente em: [https://eduardomichell.github.io/rv-s
 - [`exercicio2.html`](exercicio2.html)  
   Exercício 02 manipulando vetores na memória. Expressão em C: `A[12] = h + A[8]`
 
+- [`exercicio3.html`](exercicio3.html)  
+  Exercício 03 com instruções condicionais. Expressão em C:
+
+  ```c
+  if (i != j)
+      f = g + h;
+  f = f - i;
+  ```
+
+- [`exercicio4.html`](exercicio4.html)  
+  Exercício 04 com instruções `if/else`. Expressão em C:
+
+  ```c
+  if (i == j)
+      f = g + h;
+  else
+      f = g - h;
+  ```
+
+- [`exercicio5.html`](exercicio5.html)  
+  Exercício 05 com laço `while`. Expressão em C:
+
+  ```c
+  while (save[i] == k) i = i + j;
+  ```
+
+- [`exercicio6.html`](exercicio6.html)  
+  Exercício 06 com laço `for`. Expressão em C:
+  ```c
+  for (i = 0; i < 10; i++) j++;
+  ```
+
 ## Como usar
 
 1. Clone ou baixe este repositório:
