@@ -2,8 +2,20 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Exercício 6 - Linguagem Assembly RISC-V</title>
+    <title>Exercício 7 - Linguagem Assembly RISC-V</title>
     <style>
+      @media print {
+        @page {
+          size: A2 portrait;
+          margin: 10mm;
+        }
+
+        body {
+          width: auto;
+          margin: 0;
+          padding: 0;
+        }
+      }
       body {
         font-family: Arial, sans-serif;
         background-color: #ffffff;
@@ -99,7 +111,7 @@
     </style>
   </head>
   <body>
-    <h1>Exercício 06</h1>
+    <h1>Exercício 07</h1>
     <h3 for="studentName"><strong>Nome do aluno:</strong></h3>
     <input
       type="text"
@@ -122,7 +134,7 @@
     <h2>Objetivo</h2>
     <p>
       Consolidar o aprendizado da linguagem Assembly RISC-V e compreender como
-      as instruções de desvio condicional são executadas.
+      as instruções de suporte a procedimentos são executadas.
     </p>
 
     <h2>Instruções</h2>
@@ -133,26 +145,31 @@
 
     <pre><code>
       # ------------------------------------------------------------
-      # Exercício 06 - Versão RISC-V
-      # Trecho em C: for (i = 0; i < 3; i++) j++;
+      # Exercício 07 - Versão RISC-V
+      # Trecho em C: int f = (g + h) - (i + j);
       # ------------------------------------------------------------
-      
+
               .text
-      main:   
-              addi s0, zero, 0     # i = 0
-      Loop:   
-              slti t0, s0, 3      # se i < 3 então t0 = 1, senão t0 = 0
-              beq  t0, zero, Exit  # se t0 == 0, pula para Exit
-              addi s1, s1, 1       # j++
-              addi s0, s0, 1       # i++
-              j    Loop            # volta para o início do laço
-      Exit:   
-              nop                  # fim do programa
+              j main
+
+      leaf_example:
+              add a5, a1, a2       # a5 = g + h
+              add a6, a3, a4       # a6 = i + j
+              sub a0, a5, a6       # f = (g + h) - (i + j), resultado em a0
+              jr ra                # retorna para o chamador
+
+      main:
+              addi a1, zero, 4     # g = 4
+              addi a2, zero, 7     # h = 7
+              addi a3, zero, 2     # i = 2
+              addi a4, zero, 1     # j = 1
+              jal leaf_example     # chama a função
+              nop                  # a0 agora tem o valor de retorno (f)
     </code></pre>
 
     <h2>Montagem e Execução</h2>
     <p>Clique no botão <strong>Assemble</strong> para montar o programa.</p>
-    <img src="imgs/assemble5.png" style="width: 99%" alt="Botão Assemble" />
+    <img src="imgs/assemble6.png" style="width: 99%" alt="Botão Assemble" />
 
     <p>
       Faça a execução passo-a-passo do programa e, a cada instrução, preencha a
@@ -165,7 +182,7 @@
         <thead>
           <tr>
             <th class="tg-fymr" colspan="2">Antes da execução da instrução</th>
-            <th class="tg-7btt" colspan="3">
+            <th class="tg-7btt" colspan="8">
               Depois da execução da <br />instrução
             </th>
           </tr>
@@ -174,40 +191,51 @@
           <tr>
             <td class="tg-7btt" rowspan="4">PC</td>
             <td class="tg-7btt" rowspan="4">Instrução</td>
-            <td class="tg-fymr"></td>
+            <td class="tg-fymr">f</td>
+            <td class="tg-fymr">g</td>
+            <td class="tg-fymr">h</td>
             <td class="tg-fymr">i</td>
             <td class="tg-fymr">j</td>
-          </tr>
-          <tr>
-            <td class="tg-fymr">R5</td>
-            <td class="tg-fymr">R8</td>
-            <td class="tg-fymr">R9</td>
-          </tr>
-          <tr>
-            <td class="tg-fymr">(t0)</td>
-            <td class="tg-fymr">(s0)</td>
-            <td class="tg-fymr">(s1)</td>
-          </tr>
-          <tr>
-            <td class="tg-fymr">0x00000000</td>
-            <td class="tg-fymr">0x00000000</td>
-            <td class="tg-fymr">0x00000000</td>
-          </tr>
-          <tr>
-            <td class="tg-fymr">0x00400000</td>
-            <td class="tg-fymr">addi s0, zero, 0</td>
+            <td class="tg-fymr"></td>
             <td class="tg-0pky"></td>
+            <td class="tg-fymr"></td>
+          </tr>
+          <tr>
+            <td class="tg-fymr">R10</td>
+            <td class="tg-fymr">R11</td>
+            <td class="tg-fymr">R12</td>
+            <td class="tg-fymr">R13</td>
+            <td class="tg-fymr">R14</td>
+            <td class="tg-fymr">R15</td>
+            <td class="tg-fymr">R16</td>
+            <td class="tg-fymr">R1</td>
+          </tr>
+          <tr>
+            <td class="tg-fymr">(a0)</td>
+            <td class="tg-fymr">(a1)</td>
+            <td class="tg-fymr">(a2)</td>
+            <td class="tg-fymr">(a3)</td>
+            <td class="tg-fymr">(a4)</td>
+            <td class="tg-fymr">(a5)</td>
+            <td class="tg-fymr">(a6)</td>
+            <td class="tg-fymr">(ra)</td>
+          </tr>
+          <tr>
             <td class="tg-fymr">0x00000000</td>
-            <td class="tg-0pky"></td>
+            <td class="tg-fymr">0x00000000</td>
+            <td class="tg-fymr">0x00000000</td>
+            <td class="tg-fymr">0x00000000</td>
+            <td class="tg-fymr">0x00000000</td>
+            <td class="tg-fymr">0x00000000</td>
+            <td class="tg-fymr">0x00000000</td>
+            <td class="tg-fymr">0x00000000</td>
           </tr>
           <tr>
             <td class="tg-fymr"><input type="text" /></td>
             <td class="tg-fymr"><input type="text" /></td>
             <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-fymr"><input type="text" /></td>
             <td class="tg-0pky"><input type="text" /></td>
-            <td class="tg-0pky"><input type="text" /></td>
-          </tr>
-          <tr>
             <td class="tg-0pky"><input type="text" /></td>
             <td class="tg-0pky"><input type="text" /></td>
             <td class="tg-0pky"><input type="text" /></td>
@@ -215,6 +243,23 @@
             <td class="tg-0pky"><input type="text" /></td>
           </tr>
           <tr>
+            <td class="tg-fymr"><input type="text" /></td>
+            <td class="tg-fymr"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-fymr"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+          </tr>
+          <tr>
+            <td class="tg-fymr"><input type="text" /></td>
+            <td class="tg-fymr"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
+            <td class="tg-fymr"><input type="text" /></td>
+            <td class="tg-0pky"><input type="text" /></td>
             <td class="tg-0pky"><input type="text" /></td>
             <td class="tg-0pky"><input type="text" /></td>
             <td class="tg-0pky"><input type="text" /></td>
@@ -223,6 +268,7 @@
           </tr>
         </tbody>
       </table>
+
       <p
         style="
           background-color: #fff3cd;
@@ -252,6 +298,11 @@
       const novaLinha = document.createElement("tr");
 
       novaLinha.innerHTML = `
+        <td><input type="text" /></td>
+        <td><input type="text" /></td>
+        <td><input type="text" /></td>
+        <td><input type="text" /></td>
+        <td><input type="text" /></td>
         <td><input type="text" /></td>
         <td><input type="text" /></td>
         <td><input type="text" /></td>
