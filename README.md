@@ -51,14 +51,14 @@ Você pode acessar o RVER diretamente em: [https://eduardomichell.github.io/rv-s
   ```
 
 - [`exercicio7.html`](exercicio7.html)  
-  Exercício 06 com laço `for`. Expressão em C:
+  Exercício 07 – Implementa chamada de procedimento sem uso de pilha. Expressão em C:
 
   ```c
   int f = (g + h) - (i + j);
   ```
 
 - [`exercicio8.html`](exercicio8.html)  
-  Exercício 06 com laço `for`. Expressão em C:
+  Exercício 08 – Exemplo de procedimento que utiliza pilha para salvar registradores. Expressão em C:
   ```c
   int f = (g + h) - (i + j);
   ```
@@ -73,7 +73,7 @@ Você pode acessar o RVER diretamente em: [https://eduardomichell.github.io/rv-s
 
 3. Siga o tutorial para entender o funcionamento do simulador.
 
-4. Acesse os exercícios pelas páginas exercicio1.html e exercicio2.html.
+4. Acesse os exercícios pelas páginas exercicio1.html até exercicio8.html para praticar os conceitos.
 
 ## Navegação entre páginas
 
