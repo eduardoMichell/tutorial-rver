@@ -183,6 +183,27 @@
     </p>
     <img src="imgs/assemble.png" alt="Botão Assemble Code no RVER" />
 
+    <p>Você pode copiar o código de exemplo abaixo:</p>
+
+    <pre><code>
+      # ------------------------------------------------------------
+      # Exercício 01 - Patterson pags. 54/55/56 (versão RISC-V)
+      # Expressão em C: f = (g + h) - (i + j)
+      # ------------------------------------------------------------
+      
+          .text
+      
+      main:
+          addi t1, zero, 4      # g = 4
+          addi t2, zero, 3      # h = 3
+          addi t3, zero, 2      # i = 2
+          addi t4, zero, 1      # j = 1
+      
+          add  t5, t1, t2       # t5 = g + h
+          add  t6, t3, t4       # t6 = i + j
+          sub  t0, t5, t6       # f = t5 - t6 (resultado em t0)
+    </code></pre>
+
     <p>
       Ao concluir a montagem, o simulador alterna automaticamente para a aba
       <strong>Execute</strong>, onde o código convertido é exibido e fica pronto
@@ -252,9 +273,8 @@
 
     <h2 id="exercises">6 - Crie você mesmo seus programas</h2>
     <p>
-      Agora que você conhece o funcionamento do RVER, execute os exercícios 1 a
-      8 propostos para praticar a criação de programas em linguagem de montagem
-      RISC-V.
+      Agora que você conhece o funcionamento do RARS, execute os exercícios 1 a
+      8 para praticar a criação de programas em linguagem de montagem RISC-V.
     </p>
 
     <ul style="list-style: none; padding-left: 0; margin-top: 20px">
